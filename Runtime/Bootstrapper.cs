@@ -1,7 +1,9 @@
+using System.Linq;
 using UnityEngine;
 
 namespace JustInject
 {
+    [DefaultExecutionOrder(-999)]
     public abstract class Bootstrapper<T> : MonoBehaviour
     {
         private static Bootstrapper<T> _instance;
@@ -9,12 +11,16 @@ namespace JustInject
         [SerializeField]
         private bool _global;
 
+        protected ServiceContainer ServiceContainer { get; private set; }
+
         private void Awake()
         {
             if (_global)
             {
                 MakeSingleton();
             }
+
+            ServiceContainer = new ServiceContainer();
 
             InstallBindings();
         }
@@ -24,6 +30,15 @@ namespace JustInject
         private void InstallBindings()
         {
             OnInstallBindings();
+
+            var sceneComponents = FindObjectsOfType<GameObject>()
+                .Where(obj => obj.activeInHierarchy)
+                .SelectMany(obj => obj.GetComponentsInChildren<MonoBehaviour>());
+
+            foreach (var component in sceneComponents)
+            {
+                ServiceContainer.Inject(component);
+            }
         }
 
         private void MakeSingleton()

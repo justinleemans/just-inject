@@ -1,0 +1,15 @@
+{
+  "author": {
+    "name": "Justin Leemans"
+  },
+  "dependencies": {},
+  "description": "Lightweight experimental dependency injection framework for Unity",
+  "displayName": "Just Inject",
+  "keywords": [
+    "dependency",
+	"injection",
+	"inject"
+  ],
+  "name": "com.justinleemans.just-inject",
+  "version": "1.0.0"
+}

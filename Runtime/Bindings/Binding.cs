@@ -21,6 +21,7 @@ namespace JustInject.Bindings
         public IBinding To<TType>()
         {
             _type = typeof(TType);
+
             return this;
         }
 
@@ -44,14 +45,14 @@ namespace JustInject.Bindings
         {
             _createHandler = container =>
             {
-                _instance = instance;
+                _instance ??= instance;
 
                 container.Inject(_instance);
 
                 return _instance;
             };
             
-            return this;
+            return AsSingleton();
         }
 
         public IBinding AsSingleton()

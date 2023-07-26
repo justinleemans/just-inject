@@ -20,7 +20,7 @@ namespace JustInject
                 MakeSingleton();
             }
 
-            ServiceContainer = new ServiceContainer();
+            ServiceContainer ??= new ServiceContainer();
 
             InstallBindings();
         }
@@ -49,8 +49,9 @@ namespace JustInject
             }
             else
             {
-                _instance = this;
                 DontDestroyOnLoad(gameObject);
+
+                _instance = this;
             }
         }
     }

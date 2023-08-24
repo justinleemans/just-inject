@@ -1,35 +1,67 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace JustInject
 {
     [DefaultExecutionOrder(-999)]
-    public abstract class Bootstrapper<T> : MonoBehaviour
+    public abstract class Bootstrapper : MonoBehaviour
     {
-        private static Bootstrapper<T> _instance;
+        private static readonly Dictionary<Type, Bootstrapper> GlobalBootstrappers = new Dictionary<Type, Bootstrapper>();
+
+        #region Serialized Fields
 
         [SerializeField]
         private bool _global;
 
-        protected ServiceContainer ServiceContainer { get; private set; }
+        #endregion
+
+        protected ServiceContainer Container { get; private set; }
+
+        #region Unity Functions
 
         private void Awake()
         {
             if (_global)
             {
-                MakeSingleton();
+                RegisterAsSingleton();
+            }
+            else
+            {
+                InstallBindings();
             }
 
-            ServiceContainer ??= new ServiceContainer();
-
-            InstallBindings();
+            foreach (var globalBootstrapper in GlobalBootstrappers)
+            {
+                globalBootstrapper.Value.InstallBindings();
+            }
         }
+
+        #endregion
 
         protected abstract void OnInstallBindings();
 
+        private void RegisterAsSingleton()
+        {
+            if (GlobalBootstrappers.ContainsKey(GetType()))
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                GlobalBootstrappers.Add(GetType(), this);
+                DontDestroyOnLoad(gameObject);
+            }
+        }
+
         private void InstallBindings()
         {
-            OnInstallBindings();
+            if (Container == null)
+            {
+                Container = new ServiceContainer();
+                OnInstallBindings();
+            }
 
             var sceneComponents = FindObjectsOfType<GameObject>()
                 .Where(obj => obj.activeInHierarchy)
@@ -37,21 +69,7 @@ namespace JustInject
 
             foreach (var component in sceneComponents)
             {
-                ServiceContainer.Inject(component);
-            }
-        }
-
-        private void MakeSingleton()
-        {
-            if (_instance != null && _instance != this)
-            {
-                Destroy(gameObject);
-            }
-            else
-            {
-                DontDestroyOnLoad(gameObject);
-
-                _instance = this;
+                Container.Inject(component);
             }
         }
     }

@@ -1,6 +1,6 @@
 {
     "name": "JustInject",
-    "rootNamespace": "JustInject",
+    "rootNamespace": "JeeLee.JustInject",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -1,6 +1,6 @@
 using System;
 
-namespace JustInject
+namespace JeeLee.JustInject
 {
     [AttributeUsage(
         AttributeTargets.Constructor |

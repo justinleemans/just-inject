@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace JustInject
+namespace JeeLee.JustInject
 {
     [DefaultExecutionOrder(-999)]
     public abstract class Bootstrapper : MonoBehaviour

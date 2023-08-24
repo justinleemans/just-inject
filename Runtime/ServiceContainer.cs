@@ -1,9 +1,9 @@
-﻿using JustInject.Bindings;
+﻿using JeeLee.JustInject.Bindings;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace JustInject
+namespace JeeLee.JustInject
 {
     public class ServiceContainer
     {

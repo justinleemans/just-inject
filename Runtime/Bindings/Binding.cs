@@ -1,7 +1,7 @@
-using JustInject.Delegates;
+using JeeLee.JustInject.Delegates;
 using System;
 
-namespace JustInject.Bindings
+namespace JeeLee.JustInject.Bindings
 {
     public class Binding<TBinding> : IBinding
     {
@@ -25,13 +25,13 @@ namespace JustInject.Bindings
             return this;
         }
 
-        public IBinding FromNew()
+        public IBinding FromNew(params object[] args)
         {
             _createHandler = container =>
             {
                 if (!_isSingleton || _instance == null)
                 {
-                    _instance = Activator.CreateInstance(_type);
+                    _instance = Activator.CreateInstance(_type, args);
                     container.Inject(_instance);
                 }
 

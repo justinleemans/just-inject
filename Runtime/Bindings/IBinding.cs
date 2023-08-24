@@ -1,7 +1,7 @@
-using JustInject.Delegates;
+using JeeLee.JustInject.Delegates;
 using System;
 
-namespace JustInject.Bindings
+namespace JeeLee.JustInject.Bindings
 {
     public interface IBinding
     {
@@ -9,7 +9,7 @@ namespace JustInject.Bindings
         CreateBindingHandler CreateHandler { get; }
 
         IBinding To<TType>();
-        IBinding FromNew();
+        IBinding FromNew(params object[] args);
         IBinding FromInstance<TInstance>(TInstance instance);
         IBinding AsSingleton();
     }

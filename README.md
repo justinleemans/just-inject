@@ -10,7 +10,7 @@ Just Inject is a lightweight experimental dependency injection framework. I star
 
 # Installation
 
-Currently the best way to include this package in your project is through the unity package manager. Add the package using the git URL of this repo: https://github.com/justinleemans/just-inject
+Currently the best way to include this package in your project is through the unity package manager. Add the package using the git URL of this repo: https://github.com/justinleemans/just-inject.git
 
 # Quick Start
 

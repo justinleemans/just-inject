@@ -1,6 +1,6 @@
-# Just Inject - Lightweight experimental dependency injection framework for Unity
+# UniInjection - Lightweight experimental dependency injection framework for Unity
 
-Just Inject is a lightweight experimental dependency injection framework. I started this project as a little side project and is currently in a mostly functional state. Feel free to try it out and experiment with it. If you have any suggestions or improvements dont't hesitate to contribute.
+UniInjection is a lightweight experimental dependency injection framework. I started this project as a little side project and is currently in a mostly functional state. Feel free to try it out and experiment with it. If you have any suggestions or improvements dont't hesitate to contribute.
 
 # Table of Contents
 
@@ -10,7 +10,7 @@ Just Inject is a lightweight experimental dependency injection framework. I star
 
 # Installation
 
-Currently the best way to include this package in your project is through the unity package manager. Add the package using the git URL of this repo: https://github.com/justinleemans/just-inject.git
+Currently the best way to include this package in your project is through the unity package manager. Add the package using the git URL of this repo: https://github.com/justinleemans/uni-injection.git
 
 # Quick Start
 

@@ -1,4 +1,4 @@
-namespace JeeLee.JustInject.Delegates
+namespace JeeLee.UniInjection.Delegates
 {
     public delegate object CreateBindingHandler(ServiceContainer serviceContainer);
 }

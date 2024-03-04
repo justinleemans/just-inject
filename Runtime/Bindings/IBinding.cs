@@ -1,7 +1,7 @@
-using JeeLee.JustInject.Delegates;
+using JeeLee.UniInjection.Delegates;
 using System;
 
-namespace JeeLee.JustInject.Bindings
+namespace JeeLee.UniInjection.Bindings
 {
     public interface IBinding
     {
